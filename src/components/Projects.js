@@ -55,8 +55,8 @@ export const Projects = () => {
       title: "My-Portfolio",
       description: " Evolving creativity and technology in a dynamic digital showcase",
       imgUrl: projImg10,
-      viewDemoLink: "#", 
-      liveDemoLink: "#", 
+      viewDemoLink: "https://my-portfolio-prajwal-c-22.vercel.app/", 
+      liveDemoLink: "https://my-portfolio-prajwal-c-22.vercel.app/", 
     },
     {
       title: "My-Portfolio",
