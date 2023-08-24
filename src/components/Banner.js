@@ -71,9 +71,9 @@ export const Banner = () => {
                   </Link>
                   
                   <div className="download-button-wrapper">
-              <a className="download-link" href="/path-to-your-resume.pdf" download>
-                <button className="download-button">Download CV <CloudDownload size={25} /></button>
-              </a>
+              <a className="download-link" href={require('../assets/img/Resume.pdf')} download>
+  <button className="download-button">Download CV <CloudDownload size={25} /></button>
+</a>
             </div>
 
               </div>}
