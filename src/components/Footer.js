@@ -27,7 +27,7 @@ export const Footer = () => {
           </Col>
           <Col size={12} sm={6} className="text-center text-sm-end">
             <div className="social-icon">
-              <a href="https://www.linkedin.com/in/prajwalc-22-/"><img src={linkdin} alt="Icon" /></a>
+              <a href="https://www.linkedin.com/in/prajwalc22/"><img src={linkdin} alt="Icon" /></a>
               <a href="https://github.com/prajwalc-22"><img src={github} alt="Icon" /></a>
               <a href="mailto:prajwalc.sagar22@gmail.com"><img src={envelope} alt="Icon" /></a>
               <a href="https://twitter.com/_Prajwal_C_"><img src={twitter} alt="Icon" /></a>
