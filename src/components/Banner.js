@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../assets/img/header-img.svg";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
+import { ArrowRightCircle, CloudDownload } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-
 import { Link } from 'react-scroll';
-import { CloudDownload } from 'react-bootstrap-icons';
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -14,23 +12,25 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "Web Developer", "Web Designer", "UI/UX Designer" ];
+  const toRotate = ["Web Developer", "Web Designer", "UI/UX Designer"];
   const period = 2000;
-
-
 
   useEffect(() => {
     let ticker = setInterval(() => {
       tick();
     }, delta);
 
-    return () => { clearInterval(ticker) };
-  }, [text])
+    return () => {
+      clearInterval(ticker);
+    };
+  }, [text]);
 
   const tick = () => {
     let i = loopNum % toRotate.length;
     let fullText = toRotate[i];
-    let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+    let updatedText = isDeleting
+      ? fullText.substring(0, text.length - 1)
+      : fullText.substring(0, text.length + 1);
 
     setText(updatedText);
 
@@ -50,20 +50,32 @@ export const Banner = () => {
     } else {
       setIndex(prevIndex => prevIndex + 1);
     }
-  }
+  };
+
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownload = () => {
+    setIsDownloading(true);
+
+    // Simulate a delay for demonstration purposes
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 2000);
+  };
 
   return (
     <section className="banner" id="home">
       <Container>
-        <Row className="aligh-items-center">
+        <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
-              {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <span className="tagline">Welcome to my Portfolio</span>
-                <h1>{`Hi! I'm Prajwal C`}
-                <br />
-                 <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
+              {({ isVisible }) => (
+                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                  <span className="tagline">Welcome to my Portfolio</span>
+                  <h1>{`Hi! I'm Prajwal C`}
+                    <br />
+                    <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span>
+                  </h1>
                   <p>"Passionate Programmer Ready to Make an Impact" <br/> "I turn code into user-friendly magic, making the web an enchanting place for all to explore."</p>
                   
                   <Link to="connect" smooth={true} duration={500}>
@@ -71,24 +83,28 @@ export const Banner = () => {
                   </Link>
                   
                   <div className="download-button-wrapper">
-              <a className="download-link" href={require('../assets/img/Resume.pdf')} download>
-  <button className="download-button">Download CV <CloudDownload size={25} /></button>
-</a>
-            </div>
-
-              </div>}
+                    <a className="download-link" href={require('../assets/img/Resume.pdf')} download onClick={handleDownload}>
+                      <button className="download-button">
+                        {isDownloading ? "Downloading..." : "Download CV"}{" "}
+                        <CloudDownload size={25} />
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              )}
             </TrackVisibility>
           </Col>
           <Col xs={12} md={6} xl={5}>
             <TrackVisibility>
-              {({ isVisible }) =>
+              {({ isVisible }) => (
                 <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Header Img"/>
-                </div>}
+                  <img src={headerImg} alt="Header Img" loading="lazy" />
+                </div>
+              )}
             </TrackVisibility>
           </Col>
         </Row>
       </Container>
     </section>
-  )
-}
+  );
+};
